@@ -1,48 +1,67 @@
 var expect = require('chai').expect;
+var calc = require('../src/main.js');
 
-describe('Main', function(){
-    var arr;
-    
-    // roda uma vez, antes do bloco
-    before(function() {
-        
+describe('Calc', function(){
+   
+    // Smoke tests
+    describe('Smoke tests', function(){
+
+        it('should exist the calc lib', function(){
+            expect(calc).to.exist;
+        });
+
+        it('should exist the method `sum`', function(){
+            expect(calc.sum).to.exist;
+            expect(calc.sum).to.be.a('function');
+        });
+
+        it('should exist the method `sub`', function(){
+            expect(calc.sub).to.exist;
+            expect(calc.sub).to.be.a('function');
+        });
+
+        it('should exist the method `mult`', function(){
+            expect(calc.mult).to.exist;
+            expect(calc.mult).to.be.a('function');
+        });
+
+        it('should exist the method `div`', function(){
+            expect(calc.div).to.exist;
+            expect(calc.div).to.be.a('function');
+        });
+
     });
 
-    // roda uma vez, depois do bloco
-    after(function() {
-        
+    // Sum
+    describe('Sum', function(){
+        it('should return 4 when `sum(2,2)`', function(){
+            expect(calc.sum(2, 2)).to.be.equal(4);
+        });
     });
 
-    // roda todas as vezes, antes de CADA bloco
-    beforeEach(function() {
-        arr = [1, 2, 3];
+    // Sub
+    describe('Sub', function(){
+        it('should return 4 when `sub(6,2)`', function(){
+            expect(calc.sub(6, 2)).to.be.equal(4);
+        });
+
+        it('should return -4 when `sub(6,10)`', function(){
+            expect(calc.sub(6, 10)).to.be.equal(-4);
+        });
     });
 
-    // roda todas as vezes, depois de CADA bloco
-    afterEach(function() {
-        
+    // Mult
+    describe('Mult', function(){
+        it('should return 6 when `sub(2,3)`', function(){
+            expect(calc.mult(2, 3)).to.be.equal(6);
+        });
     });
 
-    it('should be an array', function(){
-        expect(arr).to.be.a('array');
+    // Div
+    describe('Div', function(){
+        it('should return 4 when `div(4,2)`', function(){
+            expect(calc.div(4, 2)).to.be.equal(2);
+        });
     });
 
-    it('should have a size of 4 when push another value to the array', function(){
-        arr.push(4);
-        expect(arr).to.have.lengthOf(4);
-    });
-
-    it('should remove the value 3 when use pop in the array', function(){
-        arr.pop();
-        expect(arr).to.not.include(3);
-    });
-
-    it('should be an array', function(){
-        expect(arr.pop() === 3).to.be.true;
-    });
-
-    it('should have a size of 2 when pop a value from the array', function(){
-        arr.pop();
-        expect(arr).to.have.lengthOf(2); // 2
-    });
-})
+});
