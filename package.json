@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "lint": "./node_modules/.bin/eslint src/*.js",
-    "prepush": "npm run lint",
+    "prepush": "npm run lint && npm run test:coverage",
     "test": "./node_modules/.bin/mocha __tests__/**/*.spec.js --require babel-register",
     "test:tdd": "./node_modules/.bin/mocha __tests__/**/*.spec.js --require babel-register --watch",
     "test:coverage": "nyc npm test"
   },
   "nyc": {
+    "functions": 80,
+    "lines": 80,
+    "check-coverage": true,
     "reporter": ["text", "html"],
     "exclude": ["__tests__/**"]
   },
