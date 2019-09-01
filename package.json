@@ -7,7 +7,12 @@
     "lint": "./node_modules/.bin/eslint src/*.js",
     "prepush": "npm run lint",
     "test": "./node_modules/.bin/mocha __tests__/**/*.spec.js --require babel-register",
-    "test:tdd": "./node_modules/.bin/mocha __tests__/**/*.spec.js --require babel-register --watch"
+    "test:tdd": "./node_modules/.bin/mocha __tests__/**/*.spec.js --require babel-register --watch",
+    "test:coverage": "nyc npm test"
+  },
+  "nyc": {
+    "reporter": ["text", "html"],
+    "exclude": ["__tests__/**"]
   },
   "keywords": [],
   "author": "",
@@ -26,6 +31,7 @@
     "eslint-plugin-react": "^7.14.3",
     "husky": "^3.0.4",
     "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7"
   }
